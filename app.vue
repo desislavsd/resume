@@ -78,7 +78,7 @@ watch(theme, (val) => globalThis.localStorage?.setItem('theme', val))
 </script>
 <template>
   <main style="size: A4 portrait" :class="[themes[theme]]">
-    <div class="flex">
+    <div class="print:flex md:flex">
       <button
         class="print:hidden no-prose absolute top-0 right-0 opacity-30 hover:opacity-100"
         @click="theme ^= 1"
@@ -97,7 +97,7 @@ watch(theme, (val) => globalThis.localStorage?.setItem('theme', val))
         </hgroup>
       </header>
       <nav
-        class="grid grid-cols-[auto,auto] gap-x-4 justify-between text-sm font-normal"
+        class="grid md:grid-cols-[auto,auto] print:grid-cols-[auto,auto] gap-x-4 justify-between text-sm font-normal"
       >
         <a
           v-for="item in links"
@@ -119,13 +119,13 @@ watch(theme, (val) => globalThis.localStorage?.setItem('theme', val))
       <ContentRenderer :value="data.skills" />
       <h2 class="section-title">Experience</h2>
       <template v-for="item in data.experience">
-        <div class="flex items-center text-right mt-3">
+        <div class="sm:flex print:flex items-center mt-3">
           <h3 class="m-0">{{ item.title }}</h3>
           <span class="flex flex-col ml-auto">
             <strong>{{ item.period }} </strong>
           </span>
         </div>
-        <div class="flex gap-2">
+        <div class="flex gap-x-2 whitespace-nowrap flex-wrap">
           <span>{{ item.company }}</span>
           &bull;
           <span class="opacity-50">Sofia 1000, Bulgaria</span>
@@ -144,13 +144,13 @@ watch(theme, (val) => globalThis.localStorage?.setItem('theme', val))
       <h2 class="section-title">Education</h2>
 
       <div v-for="item in education" class="mb-3">
-        <div class="flex items-center text-right">
+        <div class="sm:flex print:flex items-center">
           <h4 class="m-0">{{ item.title }}</h4>
           <span class="flex flex-col ml-auto">
             <strong>{{ item.period }} </strong>
           </span>
         </div>
-        <div class="flex gap-2">
+        <div class="sm:flex print:flex gap-2">
           <span>{{ item.degree }}</span>
           &bull;
           <span class="opacity-50">{{ item.place }}</span>
@@ -170,7 +170,7 @@ watch(theme, (val) => globalThis.localStorage?.setItem('theme', val))
   }
 }
 main {
-  @apply relative prose prose-neutral prose-headings:text-inherit prose-a:text-inherit prose-strong:text-inherit leading-6 lg:my-20 w-[227mm] print:w-full print:p-0 print:shadow-none p-[16mm] shadow mx-auto max-w-none;
+  @apply relative prose prose-neutral prose-headings:text-inherit prose-a:text-inherit prose-strong:text-inherit leading-6 lg:my-20 max-w-[227mm] print:w-full print:p-0 print:shadow-none p-4 md:p-[16mm] shadow mx-auto;
 }
 .section-title {
   @apply uppercase text-xs opacity-50 font-light;

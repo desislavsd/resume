@@ -12,9 +12,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'Rubik', ...defaultTheme.fontFamily.sans],
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
       },
-      typography: (theme) => ({
+      typography: () => ({
         DEFAULT: {
           css: {
             color: '#000', //;theme('colors.gray.800'),
